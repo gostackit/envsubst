@@ -3,13 +3,13 @@
 
 #### Installation:
 ```sh
-$ go get github.com/a8m/envsubst/cmd/envsubst
+$ go get github.com/gostackit/envsubst/cmd/envsubst
 ```
 
 #### Using via cli
 ```sh
 $ envsubst < input.tmpl > output.text
-$ echo 'welcome $HOME ${USER:=a8m}' | envsubst
+$ echo 'welcome $HOME ${USER:=gostackit}' | envsubst
 $ envsubst -help
 ```
 
@@ -24,13 +24,13 @@ There are two command line flags with which you can cause the substitution to st
 These flags can be combined to form tighter restrictions. 
 
 #### Using `envsubst` programmatically ?
-You can take a look on [`_example/main`](https://github.com/a8m/envsubst/blob/master/_example/main.go) or see the example below.
+You can take a look on [`_example/main`](https://github.com/gostackit/envsubst/blob/master/_example/main.go) or see the example below.
 ```go
 package main
 
 import (
 	"fmt"
-	"github.com/a8m/envsubst"
+	"github.com/gostackit/envsubst"
 )
 
 func main() {
@@ -63,10 +63,10 @@ func main() {
 #### License
 MIT
 
-[godoc-url]: https://godoc.org/github.com/a8m/envsubst
+[godoc-url]: https://godoc.org/github.com/gostackit/envsubst
 [godoc-img]: https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license-url]: LICENSE
-[travis-image]: https://img.shields.io/travis/a8m/envsubst.svg?style=flat-square
-[travis-url]: https://travis-ci.org/a8m/envsubst
+[travis-image]: https://img.shields.io/travis/gostackit/envsubst.svg?style=flat-square
+[travis-url]: https://travis-ci.org/gostackit/envsubst
 
