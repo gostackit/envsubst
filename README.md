@@ -1,61 +1,43 @@
-# envsubst
-[![GoDoc][godoc-img]][godoc-url]
-[![License][license-image]][license-url]
-[![Build status][travis-image]][travis-url]
-[![Github All Releases][releases-image]][releases]
+# envsubst [![CircleCI](https://circleci.com/gh/gostackit/envsubst.svg?style=svg)](https://circleci.com/gh/gostackit/envsubst)
 
 > Environment variables substitution for Go. see docs [below](#docs)
 
-#### Installation:
+## Installation
 
-##### From binaries
-Latest stable `envsubst` [prebuilt binaries for 64-bit Linux, or Mac OS X][releases] are available via Github releases.
-
-###### Linux and MacOS
-```console
-curl -L https://github.com/a8m/envsubst/releases/download/v1.1.0/envsubst-`uname -s`-`uname -m` -o envsubst
-chmod +x envsubst
-sudo mv envsubst /usr/local/bin
-```
-
-###### Windows
-Download the latest prebuilt binary from [releases page][releases], or if you have curl installed:
-```console
-curl -L https://github.com/a8m/envsubst/releases/download/v1.1.0/envsubst.exe
-```
-
-##### With go
-You can install via `go get` (provided you have installed go):
-```console
-go get github.com/a8m/envsubst/cmd/envsubst
-```
-
-
-#### Using via cli
 ```sh
-envsubst < input.tmpl > output.text
-echo 'welcome $HOME ${USER:=a8m}' | envsubst
-envsubst -help
+$ go get github.com/gostackit/envsubst/cmd/envsubst
+>>>>>>> Additional package references to update
 ```
 
-#### Imposing restrictions
-There are two command line flags with which you can cause the substitution to stop with an error code, should the restriction associated with the flag not be met. This can be handy if you want to avoid creating e.g. configuration files with unset or empty parameters. The flags and their restrictions are: 
+## Using via cli
+
+```sh
+$ envsubst < input.tmpl > output.text
+$ echo 'welcome $HOME ${USER:=gostackit}' | envsubst
+$ envsubst -help
+```
+
+## Imposing restrictions
+
+There are two command line flags with which you can cause the substitution to stop with an error code, should the restriction associated with the flag not be met. This can be handy if you want to avoid creating e.g. configuration files with unset or empty parameters. The flags and their restrictions are
 
 |__Flag__     | __Meaning__    |
 | ------------| -------------- |
 |`-no-unset`  | fail if a variable is not set
 |`-no-empty`  | fail if a variable is set but empty
 
-These flags can be combined to form tighter restrictions. 
+These flags can be combined to form tighter restrictions.
 
-#### Using `envsubst` programmatically ?
-You can take a look on [`_example/main`](https://github.com/a8m/envsubst/blob/master/_example/main.go) or see the example below.
+## Using `envsubst` programmatically?
+
+You can take a look on [`_example/main`](https://github.com/gostackit/envsubst/blob/master/_example/main.go) or see the example below.
+
 ```go
 package main
 
 import (
-	"fmt"
-	"github.com/a8m/envsubst"
+    "fmt"
+    "github.com/gostackit/envsubst"
 )
 
 func main() {
@@ -66,8 +48,11 @@ func main() {
     // ...
     buf, err := envsubst.ReadFile("filename")
 }
+
 ```
-### Docs
+
+## Docs
+
 > api docs here: [![GoDoc][godoc-img]][godoc-url]
 
 |__Expression__     | __Meaning__    |
@@ -79,7 +64,7 @@ func main() {
 |`${var:=$DEFAULT}` | If var not set or is empty, evaluate expression as $DEFAULT
 |`${var+$OTHER}`    | If var set, evaluate expression as $OTHER, otherwise as empty string
 |`${var:+$OTHER}`   | If var set, evaluate expression as $OTHER, otherwise as empty string
-|`$$var`            | Escape expressions. Result will be `$var`. 
+|`$$var`            | Escape expressions. Result will be `$var`.
 
 <sub>Most of the rows in this table were taken from [here](http://www.tldp.org/LDP/abs/html/refcards.html#AEN22728)</sub>
 
@@ -87,14 +72,13 @@ func main() {
 
 * `os.ExpandEnv(s string) string` - only supports `$var` and `${var}` notations
 
-#### License
+## License
+
 MIT
 
-[releases]: https://github.com/a8m/envsubst/releases
-[releases-image]: https://img.shields.io/github/downloads/a8m/envsubst/total.svg?style=for-the-badge
-[godoc-url]: https://godoc.org/github.com/a8m/envsubst
-[godoc-img]: https://img.shields.io/badge/godoc-reference-blue.svg?style=for-the-badge
-[license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge
+[godoc-url]: https://godoc.org/github.com/gostackit/envsubst
+[godoc-img]: https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square
+[license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license-url]: LICENSE
-[travis-image]: https://img.shields.io/travis/a8m/envsubst.svg?style=for-the-badge
-[travis-url]: https://travis-ci.org/a8m/envsubst
+[travis-image]: https://img.shields.io/travis/gostackit/envsubst.svg?style=flat-square
+[travis-url]: https://travis-ci.org/gostackit/envsubst
