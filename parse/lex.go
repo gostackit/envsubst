@@ -148,14 +148,20 @@ Loop:
 				l.emit(itemText)
 			}
 			l.pos++
-			if r := l.next(); isAlphaNumeric(r) {
-				l.backup()
-				return lexVariable
-			} else if r == '{' {
-				l.subsDepth++
-				l.emit(itemLeftDelim)
-				return lexSubstitution
-			}
+            // logic chnage from a8m version
+            // I want $$BAR to escape to be $BAR
+            rn := l.next()
+            if rn == '$' {
+                l.start=l.pos-1
+                l.emit(itemText)
+            } else if isAlphaNumeric(rn) {
+		        l.backup()
+			   	return lexVariable
+			} else if rn == '{' {
+			   	l.subsDepth++
+			   	l.emit(itemLeftDelim)
+			   	return lexSubstitution
+            }
 		case eof:
 			break Loop
 		}
