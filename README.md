@@ -1,4 +1,4 @@
-# envsubst [![Build status][travis-image]][travis-url] [![License][license-image]][license-url] [![GoDoc][godoc-img]][godoc-url]
+# envsubst [![CircleCI](https://circleci.com/gh/gostackit/envsubst.svg?style=svg)](https://circleci.com/gh/gostackit/envsubst)
 > Environment variables substitution for Go. see docs [below](#docs)
 
 #### Installation:
